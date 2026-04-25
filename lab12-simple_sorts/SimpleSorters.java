@@ -2,10 +2,7 @@ import java.util.Comparator;
 
 public class SimpleSorters {
 
-    /**
-     * Sorts an array using the optimized Bubble Sort algorithm.
-     * Uses a swapped flag to stop early if already sorted (best case O(n))
-     */
+    // This sorts an array using the optimized Bubble Sort algorithm, It also uses a swapped flag to stop early if already sorted (best case O(n))
     public static <K> void bubbleSort(K[] S, Comparator<K> comp) {
         int n = S.length;
 
