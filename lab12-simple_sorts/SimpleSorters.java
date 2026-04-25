@@ -30,10 +30,7 @@ public class SimpleSorters {
     }
 
 
-    /**
-     * Sorts an array using the Insertion Sort algorithm.
-     * Works like sorting a hand of playing cards
-     */
+    // Sorts an array using the Insertion Sort algorithm. Works like sorting a hand of playing cards
     public static <K> void insertionSort(K[] S, Comparator<K> comp) {
         int n = S.length;
 
