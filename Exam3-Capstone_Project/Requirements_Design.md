@@ -31,3 +31,18 @@ Both unsorted and sorted list implementations force a trade-off where one operat
 - **Processing all n tickets** = O(n log n)
 
 The heap height is always O(log n) because of the Complete Binary Tree Property which guarantees all levels are full except possibly the last. This means upheap and downheap never travel more than O(log n) steps.
+
+## Real World Scenario
+
+Support tickets arrive with different priority levels:
+
+Priority 1 = Critical (system outage, data loss)
+Priority 2 = High (major feature broken, VIP customer)
+Priority 3 = Medium (minor bug, general question)
+Priority 4 = Low (feedback, feature request)
+
+The scheduler always processes the lowest priority number first ensuring the most critical tickets are always handled first regardless of arrival order.
+
+## Summary
+
+A Min-Heap is the ideal data structure for this problem because it guarantees O(log n) for both insert and removeMin. This is far better than the O(n²) cost of using a sorted or unsorted list. As the number of support tickets scales to thousands or millions the heap stays efficient making it the right choice for a real world customer service system.
