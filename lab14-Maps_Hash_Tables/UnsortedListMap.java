@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+
+// this stores entries in an unsorted ArrayList
+// get put and remove are all O(n) because we scan the whole list
+// just like the lecture slides showed for unsorted list implementation
+class UnsortedListMap<K, V> implements MapADT<K, V> {
+    private ArrayList<Entry<K, V>> list = new ArrayList<>();
+
+    // this helper scans the list to find the index of a given key
+    // returns -1 if not found which is the O(n) linear search
+    private int findEntryIndex(K key) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getKey().equals(key)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int size() { return list.size(); }
+    public boolean isEmpty() { return list.isEmpty(); }
+
+    // get scans the list to find the key and returns its value
+    // returns null if key is not found just like the slides showed
+    public V get(K key) {
+        int i = findEntryIndex(key);
+        return (i != -1) ? list.get(i).getValue() : null;
+    }
+
+    // remove scans the list to find the key then removes it
+    // returns the old value or null if key was not found
+    public V remove(K key) {
+        int i = findEntryIndex(key);
+        if (i != -1) {
+            V oldValue = list.get(i).getValue();
+            list.remove(i);
+            return oldValue;
+        }
+        return null;
+    }
+
+    // put checks if the key already exists
+    // if it does update the value and return the old value
+    // if not add a new entry and return null
+    // this is O(n) because we scan the whole list to check for existing key
+    public V put(K key, V value) {
+        // step 1 search for existing key
+        int i = findEntryIndex(key);
+
+        // step 2 if found update the value and return the old value
+        if (i != -1) {
+            return list.get(i).setValue(value);
+        }
+
+        // step 3 if not found add a new entry and return null
+        list.add(new Entry<>(key, value));
+        return null;
+    }
+}
