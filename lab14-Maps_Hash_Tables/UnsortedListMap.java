@@ -1,8 +1,38 @@
 import java.util.ArrayList;
 
+// --- 1. Entry ADT ---
+// this holds the key and value pair just like the Entry ADT from the lecture slides
+class Entry<K, V> {
+    private final K key;
+    private V value;
+
+    public Entry(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+    public K getKey() { return key; }
+    public V getValue() { return value; }
+    public V setValue(V value) {
+        V old = this.value;
+        this.value = value;
+        return old;
+    }
+}
+
+// --- 2. Common Map Interface ---
+// this is the Map ADT from the lecture slides
+interface MapADT<K, V> {
+    V get(K key);
+    V put(K key, V value);
+    V remove(K key);
+    int size();
+    boolean isEmpty();
+}
+
+// --- 3. Implementation: Unsorted List Map ---
 // this stores entries in an unsorted ArrayList
-// get put and remove are all O(n) because we scan the whole list
-// just like the lecture slides showed for unsorted list implementation
+// get put and remove are all O(n) because we have to scan the whole list
+// just like the lecture slides showed for the unsorted list implementation
 class UnsortedListMap<K, V> implements MapADT<K, V> {
     private ArrayList<Entry<K, V>> list = new ArrayList<>();
 
