@@ -19,6 +19,5 @@ public class Lab14Driver {
         // test remove
         System.out.println("remove(5): " + map.remove(5)); // A
 
-        System.out.println("\nAll operations match expected output from lecture slides!");
     }
 }
